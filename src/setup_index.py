@@ -8,13 +8,15 @@ from azure.search.documents import SearchClient
 
 # The following variables from your .env file are used in this notebook
 search_endpoint = os.environ["AZURE_SEARCH_SERVICE_ENDPOINT"]
-credential = DefaultAzureCredential()
-index_name = os.getenv("AZURE_SEARCH_INDEX")
 azure_openai_endpoint = os.environ["AZURE_OPENAI_ENDPOINT"]
+index_name = os.getenv("AZURE_SEARCH_INDEX", "graph-ai-search-index")
 azure_openai_embedding_deployment = os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-3-large")
-azure_openai_embedding_dimensions = int(os.getenv("AZURE_OPENAI_EMBEDDING_DIMENSIONS", 1024))
+azure_openai_embedding_dimensions = int(os.getenv("AZURE_OPENAI_EMBEDDING_DIMENSIONS", "1024"))
 embedding_model_name = os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT", "text-embedding-3-large")
-azure_openai_api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-10-21") # https://learn.microsoft.com/en-us/azure/ai-services/openai/api-version-deprecation
+# https://learn.microsoft.com/en-us/azure/ai-services/openai/api-version-deprecation
+azure_openai_api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-10-21") 
+
+credential = DefaultAzureCredential()
 
 search_client = SearchClient(search_endpoint, index_name, credential)
 
