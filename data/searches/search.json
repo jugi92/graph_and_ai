@@ -1,0 +1,18 @@
+{
+    "search": "bang",
+    "count": true,
+    "top": 5,
+    "vectorQueries": [
+      {
+        "kind": "text",
+        "text": "bang",
+        "fields": "text_vector"
+      }
+    ],
+    "queryType": "semantic",
+    "semanticConfiguration": "vector-1744205712204-semantic-configuration",
+    "captions": "extractive",
+    "answers": "extractive|count-3",
+    "queryLanguage": "en-us",
+    "select": "chunk_id,parent_id,chunk,title,label,id"
+  }
